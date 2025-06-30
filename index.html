@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Programs</title>
+    <style>
+      div {
+        width:98%;
+        height:auto;
+        background-color: antiquewhite;
+        margin:5px;
+        padding:10px;
+        text-align: center;
+      }
+      button {
+        float:right;
+      }
+    </style>
+</head>
+<body>
+    <h2>JavaScript Array Programs</h2>
+
+    <div>
+        <label for="sortArrayInput">Enter a list of numbers (comma-separated):</label>
+        <input type="text" id="sortArrayInput" placeholder="e.g., 5,3,8,1">
+        <button onclick="displaySortedArray()">Sort Array</button>
+        <div id="sortedArray"></div>
+    </div>
+
+    <div>
+        <label for="concatArrayInput1">Enter first array (comma-separated):</label>
+        <input type="text" id="concatArrayInput1" placeholder="e.g., 1,2,3">
+        <br><br>
+        <label for="concatArrayInput2">Enter second array (comma-separated):</label>
+        <input type="text" id="concatArrayInput2" placeholder="e.g., 4,5,6">
+        <button onclick="displayConcatenatedArray()">Concatenate Arrays</button>
+        <div id="concatenatedArray"></div>
+    </div>
+
+    <div>
+        <label for="removeFirstInput">Enter a list of numbers (comma-separated):</label>
+        <input type="text" id="removeFirstInput" placeholder="e.g., 9,8,7,6">
+        <button onclick="displayArrayAfterRemoval()">Remove First Element</button>
+        <div id="arrayAfterRemoval"></div>
+    </div>
+
+    <script>
+        // 1. Program to sort an Array
+        function sortArray(arr) {
+            return arr.sort((a, b) => a - b);
+        }
+        function displaySortedArray() {
+            const input = document.getElementById("sortArrayInput").value;
+            const numbers = input.split(",").map(Number);
+            const sorted = sortArray(numbers);
+            document.getElementById("sortedArray").innerHTML = 
+                `<strong>Sorted Array:</strong> [${sorted}]`;
+        }
+
+        // 2. Program to concatenate two arrays
+        function concatenateArrays(arr1, arr2) {
+            return arr1.concat(arr2);
+        }
+        function displayConcatenatedArray() {
+            const input1 = document.getElementById("concatArrayInput1").value;
+            const input2 = document.getElementById("concatArrayInput2").value;
+            const array1 = input1.split(",").map(Number);
+            const array2 = input2.split(",").map(Number);
+            const concatenated = concatenateArrays(array1, array2);
+            document.getElementById("concatenatedArray").innerHTML = 
+                `<strong>Concatenated Array:</strong> [${concatenated}]`;
+        }
+
+        // 3. Program to remove the first element from a JavaScript Array
+        function removeFirstElement(arr) {
+            arr.shift();
+            return arr;
+        }
+        function displayArrayAfterRemoval() {
+            const input = document.getElementById("removeFirstInput").value;
+            const array = input.split(",").map(Number);
+            const modifiedArray = removeFirstElement(array);
+            document.getElementById("arrayAfterRemoval").innerHTML = 
+                `<strong>Array after removing the first element:</strong> [${modifiedArray}]`;
+        }
+    </script>
+</body>
+</html>
